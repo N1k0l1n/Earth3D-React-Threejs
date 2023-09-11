@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import React, { useRef } from "react";
 import * as THREE from "three";
 import EarthDayMap from "../../assets/textures/8k_earth_daymap.jpg";
 import EarthNormalMap from "../../assets/textures/8k_earth_normal_map.jpg";
@@ -18,12 +18,11 @@ export function Earth(props) {
   const cloudsRef = useRef();
 
   //autorotation
-  useFrame(({clock}) => {
+  useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
-    earthRef.current.rotation.y = elapsedTime/6;
-    cloudsRef.current.rotation.y = elapsedTime/6;
-}
-  )
+    earthRef.current.rotation.y = elapsedTime / 6;
+    cloudsRef.current.rotation.y = elapsedTime / 6;
+  });
 
   return (
     <>
@@ -37,7 +36,7 @@ export function Earth(props) {
         saturation={0}
         fade={true}
       />
-      <mesh ref={cloudsRef}>
+      <mesh ref={cloudsRef}  position={[0, 0, 3]}>
         <sphereGeometry args={[1.005, 32, 32]} />
         <meshPhongMaterial
           map={cloudsMap}
@@ -47,7 +46,7 @@ export function Earth(props) {
           side={THREE.DoubleSide}
         />
       </mesh>
-      <mesh ref={earthRef}>
+      <mesh ref={earthRef} position={[0, 0, 3]}>
         <sphereGeometry args={[1, 32, 32]} />
         <meshPhongMaterial specularMap={specularMap} />
         <meshStandardMaterial
