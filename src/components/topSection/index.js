@@ -64,13 +64,6 @@ const DonateButton = styled.button`
   }
 `;
 
-const MadeBy = styled.h3`
-  color: #fff;
-  position: fixed;
-  bottom: 5px;
-  left: 50%;
-  transform: translateX(-50%);
-`;
 
 export function TopSection() {
   return (
